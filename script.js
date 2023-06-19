@@ -5,9 +5,7 @@ fetch('https://fakestoreapi.com/products')
 
   .then(response => response.json())
   .then(data => {
-    // Processando os dados recebidos da API
     data.forEach(product => {
-      // Criando um elemento de card para cada produto
       const card = document.createElement('div');
       card.classList.add('card');
 
@@ -16,7 +14,6 @@ fetch('https://fakestoreapi.com/products')
         <img src="${product.image}" alt="${product.title}" />
         <p>R$ ${product.price}</p>
       `;
-      // Adicionando o card à div de produtos
       productList.appendChild(card);
     });
   })
@@ -25,31 +22,29 @@ fetch('https://fakestoreapi.com/products')
   });
 
   $(document).ready(function() {
-    // Obter produtos da API
     $.get("https://fakestoreapi.com/products", function(products) {
         var productContainer = $(".product-container");
         var carouselImages = $(".carousel-images ul");
 
-        // Loop através dos produtos
         $.each(products, function(index, product) {
-            // Criação do elemento do produto
+
             var productElement = $("<div>").addClass("product");
             var titleElement = $("<h3>").text(product.title);
             var priceElement = $("<p>").text("Price: $" + product.price);
 
-            // Adicionando elementos ao container de produtos
+
             productElement.append(titleElement, priceElement);
             productContainer.append(productElement);
 
-            // Criação do elemento do carrossel de imagens
+
             var imageElement = $("<img>").attr("src", product.image).attr("alt", product.title);
             var carouselImageItem = $("<li>").append(imageElement);
 
-            // Adicionando elementos ao carrossel de imagens
+
             carouselImages.append(carouselImageItem);
         });
 
-        // Carrossel
+
         var carouselIndex = 0;
         var carouselItemsCount = carouselImages.children().length;
 
