@@ -1,6 +1,5 @@
 const productList = document.getElementById('products-list');
 
-// Fazendo a solicitação HTTP para a API
 fetch('https://fakestoreapi.com/products')
 
   .then(response => response.json())
